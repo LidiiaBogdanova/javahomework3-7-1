@@ -4,6 +4,7 @@ import domain.Ticket;
 import exception.NotFoundException;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class TicketRepository {
     private Ticket[] tickets = new Ticket[0];
@@ -20,7 +21,7 @@ public class TicketRepository {
 
     }
 
-    public Ticket[] findAll(String from, String to) {
+    public Ticket[] findAll(String from, String to, Comparator<Ticket> comparator) {
         int count = 0;
         for (Ticket ticket : tickets) {
             if (ticket.getFrom().equals(from) && ticket.getTo().equals(to)) {
@@ -35,7 +36,7 @@ public class TicketRepository {
                 index++;
             }
         }
-        Arrays.sort(tmp);
+        Arrays.sort(tmp, comparator);
         tickets = tmp;
         return tickets;
     }

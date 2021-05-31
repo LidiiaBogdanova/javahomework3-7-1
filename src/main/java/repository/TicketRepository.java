@@ -23,14 +23,14 @@ public class TicketRepository {
     public Ticket[] findAll(String from, String to) {
         int count = 0;
         for (Ticket ticket : tickets) {
-            if (ticket.getFrom() == from && ticket.getTo() == to) {
+            if (ticket.getFrom().equals(from) && ticket.getTo().equals(to)) {
                 count++;
             }
         }
         Ticket[] tmp = new Ticket[count];
         int index = 0;
         for (Ticket ticket : tickets) {
-            if (ticket.getFrom() == from && ticket.getTo() == to) {
+            if (ticket.getFrom().equals(from) && ticket.getTo().equals(to)) {
                 tmp[index] = ticket;
                 index++;
             }
